@@ -1,10 +1,12 @@
 variable "aws_region" {
   description = "The AWS region to create things in."
-  default     = "us-east-1"
+  # default     = "us-east-1"
+  # if the above default value is not set Terraform will ask you for the region during runtime.
 }
 
 variable "aws_account_id" {
   description = "AWS account ID"
+  default     = "" # Fill in your account ID
 }
 
 variable "az_count" {
@@ -14,12 +16,12 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "adongy/hostname-docker:latest"
+  default     = "<YOUR-ACCOUNT-ID>.dkr.ecr.us-east-1.amazonaws.com/nginx" # Path to your Docker image!
 }
 
 variable "app_port" {
   description = "Port exposed by the docker image to redirect traffic to"
-  default     = 3000
+  default     = 80
 }
 
 variable "app_count" {
